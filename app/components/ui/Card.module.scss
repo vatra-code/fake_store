@@ -1,0 +1,33 @@
+@import '../../styles/variables';
+
+.card {
+  background: $glass-background;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border: 1px solid $glass-border;
+  border-radius: $radius-lg;
+  box-shadow: $glass-shadow;
+  padding: $spacing-lg;
+  transition: all $transition-base;
+
+  &:hover {
+    background: $glass-background-hover;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &[role="button"] {
+    cursor: pointer;
+
+    &:focus {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+  }
+}
+
