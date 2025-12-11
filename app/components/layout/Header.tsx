@@ -11,6 +11,7 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
+        {/*FIXME: move routes into constants*/}
         <Link href="/" className={styles.logo}>
           <span className={styles.logoText}>Fake Store</span>
         </Link>

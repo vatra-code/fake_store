@@ -1,5 +1,6 @@
 'use client';
 
+// FIXME: Duplicate of app/components/imported/LightRays.tsx
 import { useRef, useEffect, useState } from 'react';
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
 import './LightRays.css';

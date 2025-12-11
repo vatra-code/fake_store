@@ -24,12 +24,14 @@ export async function getUsers(params?: GetUsersParams): Promise<User[]> {
       'Content-Type': 'application/json',
     },
     cache: 'no-store',
+    // FIXME: Add AbortSignal to fetch
   });
 
   if (!response.ok) {
     throw new Error(`Failed to fetch users: ${response.statusText}`);
   }
 
+  // TODO: return await response.json() as User[] is the same;
   const users: User[] = await response.json();
   return users;
 }

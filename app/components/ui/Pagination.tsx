@@ -11,6 +11,7 @@ interface PaginationProps {
   onPrevious: () => void;
 }
 
+// TODO: hardcoded magic numbers
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,

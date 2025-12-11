@@ -5,6 +5,8 @@ import "@/styles/globals.scss";
 import { Header } from "@/components/layout/Header";
 import LightRays from "@/components/imported/LightRays";
 
+// FIXME: imports client components
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
@@ -24,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={dmSans.variable}>
+        {/* TODO: Replace inline styles with CSS class */}
         <div style={{ width: '100%', minHeight: '100vh', position: 'relative' }}>
           <LightRays
             raysOrigin="top-center"
