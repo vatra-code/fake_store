@@ -26,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={dmSans.variable}>
+        {/* TODO: Replace inline styles with CSS class */}
         <div style={{ width: '100%', minHeight: '100vh', position: 'relative' }}>
           <LightRays
             raysOrigin="top-center"

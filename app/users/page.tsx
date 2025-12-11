@@ -6,6 +6,7 @@ import { Pagination } from '@/components/ui/Pagination';
 import { useUsers } from '@/features/users/hooks/useUsers';
 import styles from './page.module.scss';
 
+// TODO: Fix project structure - page is in app/users/ while feature logic is in app/features/users/
 export default function UsersPage() {
   const {
     users,

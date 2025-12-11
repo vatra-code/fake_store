@@ -13,6 +13,8 @@ export const UserCard: React.FC<UserCardProps> = ({ user }) => {
     <Card className={styles.userCard}>
       <div className={styles.avatarContainer}>
         <div className={styles.avatarWrapper}>
+          {/* TODO: Add error handling for broken image URLs (onError handler or fallback image) */}
+          {/* TODO: Validate avatar URL format before rendering to prevent Cross-Site Scripting) risks */}
           <Image
             src={user.avatar}
             alt={`${user.name}'s avatar`}
