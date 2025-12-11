@@ -5,6 +5,7 @@ const API_BASE_URL = process.env.API_BASE_URL || 'https://api.escuelajs.co/api/v
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
+    // TODO: Add limit validation
     const limit = searchParams.get('limit') || '30';
 
     const url = new URL(`${API_BASE_URL}/users`);

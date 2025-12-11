@@ -32,6 +32,7 @@ export function useUsers(options: UseUsersOptions = {}): UseUsersReturn {
     try {
       setLoading(true);
       setError(null);
+      // FIXME: Add AbortSignal
       const fetchedUsers = await getUsers({ limit: 30 });
       setAllUsers(fetchedUsers);
     } catch (err) {
@@ -63,6 +64,7 @@ export function useUsers(options: UseUsersOptions = {}): UseUsersReturn {
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages && page !== currentPage) {
       setCurrentPage(page);
+      // FIXME: window.scrollTo is used, but file doesn't have "use client"
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };

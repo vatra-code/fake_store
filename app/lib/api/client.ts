@@ -24,6 +24,7 @@ export async function getUsers(params?: GetUsersParams): Promise<User[]> {
       'Content-Type': 'application/json',
     },
     cache: 'no-store',
+    // FIXME: Add AbortSignal to fetch
   });
 
   if (!response.ok) {

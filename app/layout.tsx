@@ -5,6 +5,8 @@ import "@/styles/globals.scss";
 import { Header } from "@/components/layout/Header";
 import LightRays from "@/components/imported/LightRays";
 
+// FIXME: imports client components
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
