@@ -5,11 +5,18 @@ const API_BASE_URL = process.env.API_BASE_URL || 'https://api.escuelajs.co/api/v
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    // TODO: Add limit validation
-    const limit = searchParams.get('limit') || '30';
+    const limitParam = searchParams.get('limit') || '30';
+    const limit = parseInt(limitParam);
+
+    if (isNaN(limit) || limit < 1 || limit > 100) {
+      return NextResponse.json(
+        { error: 'Limit must be a number between 1 and 100' },
+        { status: 400 }
+      );
+    }
 
     const url = new URL(`${API_BASE_URL}/users`);
-    url.searchParams.set('limit', limit);
+    url.searchParams.set('limit', limit.toString());
 
     const response = await fetch(url.toString(), {
       method: 'GET',
