@@ -1,5 +1,5 @@
-@import './variables';
-@import "tailwindcss";
+@use "tailwindcss";
+@use "./variables" as *;
 
 @custom-variant dark (&:is(.dark *));
 

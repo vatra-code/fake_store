@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { User } from '@/types/user';
 import { UserCard } from './UserCard';
+
 import styles from './UserList.module.scss';
 
 interface UserListProps {

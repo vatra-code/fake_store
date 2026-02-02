@@ -1,5 +1,6 @@
 import React from 'react';
 import { clsx } from 'clsx';
+
 import styles from './Card.module.scss';
 
 interface CardProps {
