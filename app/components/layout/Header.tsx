@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
         </Link>
 
         <nav className={styles.nav}>
-          {NAV_LINKS.filter((link) => !link.isLogo).map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
