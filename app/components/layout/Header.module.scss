@@ -65,17 +65,6 @@
   &.active {
     color: $color-text-primary;
     background: $glass-background-hover;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: $spacing-md;
-      right: $spacing-md;
-      height: 2px;
-      background: $color-primary;
-      border-radius: 2px 2px 0 0;
-    }
   }
 }
 

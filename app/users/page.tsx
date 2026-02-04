@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
-import { UserList } from '@/features/users/components/UserList';
+import { UserList } from '@/users/components/UserList';
 import { Pagination } from '@/components/ui/Pagination';
-import { useUsers } from '@/features/users/hooks/useUsers';
+import { useUsers } from '@/users/hooks/useUsers';
 import styles from './page.module.scss';
 
+// TODO: Fix project structure - page is in app/users/ while feature logic is in app/features/users/
 export default function UsersPage() {
   const {
     users,

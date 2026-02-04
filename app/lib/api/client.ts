@@ -4,6 +4,7 @@ const API_BASE_URL = '/api';
 
 export interface GetUsersParams {
   limit?: number;
+  signal?: AbortSignal;
 }
 
 export async function getUsers(params?: GetUsersParams): Promise<User[]> {
@@ -20,17 +21,15 @@ export async function getUsers(params?: GetUsersParams): Promise<User[]> {
 
   const response = await fetch(url, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     cache: 'no-store',
+    signal: params?.signal,
   });
 
   if (!response.ok) {
     throw new Error(`Failed to fetch users: ${response.statusText}`);
   }
 
-  const users: User[] = await response.json();
-  return users;
+  return await response.json() as User[];
 }
 

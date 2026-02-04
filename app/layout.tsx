@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
-import "@/styles/animations.css";
-import "@/styles/globals.scss";
+
 import { Header } from "@/components/layout/Header";
 import LightRays from "@/components/imported/LightRays";
+
+import "@/styles/animations.css";
+import "@/styles/globals.scss";
+import styles from './layout.module.scss';
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -24,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={dmSans.variable}>
-        <div style={{ width: '100%', minHeight: '100vh', position: 'relative' }}>
+        <div className={styles.content}>
           <LightRays
             raysOrigin="top-center"
             raysColor="#00ffff"

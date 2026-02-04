@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './Pagination.module.scss';
 
 interface PaginationProps {
@@ -11,6 +12,12 @@ interface PaginationProps {
   onPrevious: () => void;
 }
 
+const MAX_VISIBLE_PAGES = 5;
+const PAGES_AT_EDGE = 4;
+const START_EDGE_THRESHOLD = PAGES_AT_EDGE - 1;
+const END_EDGE_OFFSET = 2;
+const PAGES_EACH_SIDE_IN_MIDDLE = 1;
+
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
@@ -22,29 +29,28 @@ export const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
-    const maxVisible = 5;
 
-    if (totalPages <= maxVisible) {
+    if (totalPages <= MAX_VISIBLE_PAGES) {
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      if (currentPage <= 3) {
-        for (let i = 1; i <= 4; i++) {
+      if (currentPage <= START_EDGE_THRESHOLD) {
+        for (let i = 1; i <= PAGES_AT_EDGE; i++) {
           pages.push(i);
         }
         pages.push('ellipsis');
         pages.push(totalPages);
-      } else if (currentPage >= totalPages - 2) {
+      } else if (currentPage >= totalPages - END_EDGE_OFFSET) {
         pages.push(1);
         pages.push('ellipsis');
-        for (let i = totalPages - 3; i <= totalPages; i++) {
+        for (let i = totalPages - END_EDGE_OFFSET; i <= totalPages; i++) {
           pages.push(i);
         }
       } else {
         pages.push(1);
         pages.push('ellipsis');
-        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+        for (let i = currentPage - PAGES_EACH_SIDE_IN_MIDDLE; i <= currentPage + PAGES_EACH_SIDE_IN_MIDDLE; i++) {
           pages.push(i);
         }
         pages.push('ellipsis');
