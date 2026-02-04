@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect, useMemo } from 'react';
 import { User } from '@/types/user';
 import { getUsers } from '@/lib/api/client';
@@ -28,14 +30,19 @@ export function useUsers(options: UseUsersOptions = {}): UseUsersReturn {
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
 
-  const fetchUsers = async () => {
+  const fetchUsers = async (signal?: AbortSignal) => {
     try {
       setLoading(true);
       setError(null);
-      // FIXME: Add AbortSignal
-      const fetchedUsers = await getUsers({ limit: 30 });
+
+      const fetchedUsers = await getUsers({ limit: 30, signal });
+
       setAllUsers(fetchedUsers);
     } catch (err) {
+      if (err instanceof Error && err.name === 'AbortError') {
+        return;
+      }
+
       setError(err instanceof Error ? err.message : 'Failed to fetch users');
       setAllUsers([]);
     } finally {
@@ -44,7 +51,11 @@ export function useUsers(options: UseUsersOptions = {}): UseUsersReturn {
   };
 
   useEffect(() => {
-    fetchUsers();
+    const controller = new AbortController();
+
+    fetchUsers(controller.signal);
+
+    return () => controller.abort();
   }, []);
 
   // Calculate pagination from all users
@@ -64,7 +75,6 @@ export function useUsers(options: UseUsersOptions = {}): UseUsersReturn {
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages && page !== currentPage) {
       setCurrentPage(page);
-      // FIXME: window.scrollTo is used, but file doesn't have "use client"
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
