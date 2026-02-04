@@ -33,7 +33,7 @@ export const UserCard: React.FC<UserCardProps> = ({ user }) => {
       clearTimeout(id);
       loadTimeoutRef.current = null;
     };
-  }, [hasImageError, user.avatar, isSafeAvatarUrl]);
+  }, [hasImageError, user.avatar]);
 
   const onAvatarError = () => {
     if (loadTimeoutRef.current) {

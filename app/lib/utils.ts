@@ -22,7 +22,7 @@ export function isSafeAvatarUrl(url: string) {
     }
     
     return false;
-  } catch (error) {
+  } catch {
     return false;
   }
 }

@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { ROUTES, NAV_LINKS } from '@/constants/route';
+import { ROUTES, NAV_LINKS } from '@/_constants/routes';
 
 import styles from './Header.module.scss';
 
